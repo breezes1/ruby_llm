@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.mistral.ai/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"mistral-small-latest","messages":[{"role":"user","content":"Count
+        from 1 to 3"}],"stream":true,"temperature":0.0}'
+    headers:
+      User-Agent:
+      - Faraday v2.13.4
+      Authorization:
+      - Bearer <MISTRAL_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 21 Sep 2025 14:46:39 GMT
+      Content-Type:
+      - text/event-stream; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Cf-Ray:
+      - "<CF_RAY>"
+      Mistral-Correlation-Id:
+      - '01996cbd-c089-7b36-b1a1-11b29be9b5cb'
+      X-Kong-Request-Id:
+      - '01996cbd-c089-7b36-b1a1-11b29be9b5cb'
+      X-Envoy-Upstream-Service-Time:
+      - '54'
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Kong-Upstream-Latency:
+      - '55'
+      X-Kong-Proxy-Latency:
+      - '7'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      - "<COOKIE>"
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Server:
+      - cloudflare
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: UTF-8
+      string: |+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"role":"assistant","content":""},"finish_reason":null}]}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"Here"},"finish_reason":null}],"p":"abcdefghijklmnopqrstuvwxyz012"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"'s"},"finish_reason":null}],"p":"abcdefghijklmn"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":" the"},"finish_reason":null}],"p":"abcdefghijklmnopqrstuvwxyz012345"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":" count"},"finish_reason":null}],"p":"abcdefghijklmnopqrst"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":" from"},"finish_reason":null}],"p":"abcdefghijklmnopqrstuvwxyz012"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":" "},"finish_reason":null}],"p":"abcdefghijklmnopqrstuvwxyz012"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"1"},"finish_reason":null}],"p":"abcdefghijklmn"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":" to"},"finish_reason":null}],"p":"abcdefghijklm"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":" "},"finish_reason":null}],"p":"abcdefghijklmnop"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"3"},"finish_reason":null}],"p":"abcdefg"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":":\n\n"},"finish_reason":null}],"p":"abcdefghijklmnopqrstuvwxyz01234"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"1"},"finish_reason":null}],"p":"abcdefghijklmnopq"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"\n"},"finish_reason":null}],"p":"abcdefghijklmnopqrstuvwxyz0123"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"2"},"finish_reason":null}],"p":"a"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"\n"},"finish_reason":null}],"p":"abcdefghijklmnopqrstuvwxy"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":"3"},"finish_reason":null}],"p":"abcdefghijklmnopqrstuvwxyz0"}
+
+        data: {"id":"1fcc15fcf4194b84a3d94b0519206ed2","object":"chat.completion.chunk","created":1758465999,"model":"mistral-small-latest","choices":[{"index":0,"delta":{"content":""},"finish_reason":"stop"}],"usage":{"prompt_tokens":10,"total_tokens":27,"completion_tokens":17},"p":"abcdefghi"}
+
+        data: [DONE]
+
+  recorded_at: Sun, 21 Sep 2025 14:46:39 GMT
+- request:
+    method: post
+    uri: https://api.mistral.ai/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"mistral-small-latest","messages":[{"role":"user","content":"Count
+        from 1 to 3"}],"stream":false,"temperature":0.0}'
+    headers:
+      User-Agent:
+      - Faraday v2.13.4
+      Authorization:
+      - Bearer <MISTRAL_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 21 Sep 2025 14:46:39 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Mistral-Correlation-Id:
+      - '01996cbd-c1da-7f07-9b19-92b5f018b8b9'
+      X-Kong-Request-Id:
+      - '01996cbd-c1da-7f07-9b19-92b5f018b8b9'
+      X-Envoy-Upstream-Service-Time:
+      - '203'
+      X-Ratelimit-Limit-Tokens-Minute:
+      - '500000'
+      X-Ratelimit-Remaining-Tokens-Minute:
+      - '499919'
+      X-Ratelimit-Limit-Tokens-Month:
+      - '1000000000'
+      X-Ratelimit-Remaining-Tokens-Month:
+      - '999976522'
+      X-Ratelimit-Tokens-Query-Cost:
+      - '27'
+      X-Ratelimit-Limit-Req-Minute:
+      - '60'
+      X-Ratelimit-Remaining-Req-Minute:
+      - '57'
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Kong-Upstream-Latency:
+      - '204'
+      X-Kong-Proxy-Latency:
+      - '7'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      - "<COOKIE>"
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"c3ae237f9bbc46278bb01e55e3194c9b","created":1758465999,"model":"mistral-small-latest","usage":{"prompt_tokens":10,"total_tokens":27,"completion_tokens":17},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"Here''s
+        the count from 1 to 3:\n\n1\n2\n3"}}]}'
+  recorded_at: Sun, 21 Sep 2025 14:46:39 GMT
+recorded_with: VCR 6.3.1
+...

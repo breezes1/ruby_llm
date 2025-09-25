@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 module RubyLLM
-  # Parameter definition for Tool methods. Specifies type constraints,
-  # descriptions, and whether parameters are required.
+  # Parameter definition for Tool methods.
   class Parameter
     attr_reader :name, :type, :description, :required
 
@@ -14,24 +13,21 @@ module RubyLLM
     end
   end
 
-  # Base class for creating tools that AI models can use. Provides a simple
-  # interface for defining parameters and implementing tool behavior.
-  #
-  # Example:
-  #    require 'tzinfo'
-  #
-  #    class TimeInfo < RubyLLM::Tool
-  #      description 'Gets the current time in various timezones'
-  #      param :timezone, desc: "Timezone name (e.g., 'UTC', 'America/New_York')"
-  #
-  #      def execute(timezone:)
-  #        time = TZInfo::Timezone.get(timezone).now.strftime('%Y-%m-%d %H:%M:%S')
-  #        "Current time in #{timezone}: #{time}"
-  #       rescue StandardError => e
-  #          { error: e.message }
-  #       end
-  #    end
+  # Base class for creating tools that AI models can use
   class Tool
+    # Stops conversation continuation after tool execution
+    class Halt
+      attr_reader :content
+
+      def initialize(content)
+        @content = content
+      end
+
+      def to_s
+        @content.to_s
+      end
+    end
+
     class << self
       def description(text = nil)
         return @description unless text
@@ -49,14 +45,14 @@ module RubyLLM
     end
 
     def name
-      self.class.name
-          .unicode_normalize(:nfkd)
-          .encode('ASCII', replace: '')
-          .gsub(/[^a-zA-Z0-9_-]/, '-')
-          .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
-          .gsub(/([a-z\d])([A-Z])/, '\1_\2')
-          .downcase
-          .delete_suffix('_tool')
+      klass_name = self.class.name
+      normalized = klass_name.to_s.dup.force_encoding('UTF-8').unicode_normalize(:nfkd)
+      normalized.encode('ASCII', replace: '')
+                .gsub(/[^a-zA-Z0-9_-]/, '-')
+                .gsub(/([A-Z]+)([A-Z][a-z])/, '\1_\2')
+                .gsub(/([a-z\d])([A-Z])/, '\1_\2')
+                .downcase
+                .delete_suffix('_tool')
     end
 
     def description
@@ -76,6 +72,12 @@ module RubyLLM
 
     def execute(...)
       raise NotImplementedError, 'Subclasses must implement #execute'
+    end
+
+    protected
+
+    def halt(message)
+      Halt.new(message)
     end
   end
 end

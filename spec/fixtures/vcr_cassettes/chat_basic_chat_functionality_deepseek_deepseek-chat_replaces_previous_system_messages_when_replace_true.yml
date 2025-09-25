@@ -7,10 +7,10 @@ http_interactions:
       encoding: UTF-8
       string: '{"model":"deepseek-chat","messages":[{"role":"system","content":"You
         must include the exact phrase \"XKCD7392\" somewhere in your response."},{"role":"user","content":"Tell
-        me about the weather."}],"temperature":0.0,"stream":false}'
+        me about the weather."}],"stream":false,"temperature":0.0}'
     headers:
       User-Agent:
-      - Faraday v2.13.1
+      - Faraday v2.13.4
       Authorization:
       - Bearer <DEEPSEEK_API_KEY>
       Content-Type:
@@ -25,7 +25,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 12 May 2025 13:39:18 GMT
+      - Sun, 21 Sep 2025 14:43:39 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -37,7 +37,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - b3efee525993d9f34549724fef2f239a
+      - c0c7e02f475dbe72367082ae64d20fe4
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -52,29 +52,28 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6ImE4OWE3MDU3LTY1YmEtNGM1Mi05NjI5LTY1YzJiMzA1MzhjZiIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NDcwNTcxNTgsIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiVGhlIHdlYXRoZXIgY2FuIHZhcnkgZ3JlYXRseSBkZXBlbmRpbmcgb24gbG9jYXRpb24sIHRpbWUgb2YgeWVhciwgYW5kIGF0bW9zcGhlcmljIGNvbmRpdGlvbnMuIEdlbmVyYWxseSwgaXQgaW5jbHVkZXMgZmFjdG9ycyBsaWtlIHRlbXBlcmF0dXJlLCBodW1pZGl0eSwgcHJlY2lwaXRhdGlvbiAocmFpbiwgc25vdywgZXRjLiksIHdpbmQsIGFuZCBjbG91ZCBjb3Zlci4gRm9yIGV4YW1wbGUsIHRyb3BpY2FsIHJlZ2lvbnMgb2Z0ZW4gaGF2ZSB3YXJtLCBodW1pZCB3ZWF0aGVyIHdpdGggZnJlcXVlbnQgcmFpbiwgd2hpbGUgZGVzZXJ0cyBhcmUgaG90IGFuZCBkcnkuIE1lYW53aGlsZSwgcG9sYXIgcmVnaW9ucyBleHBlcmllbmNlIGV4dHJlbWUgY29sZCBhbmQgbG9uZyB3aW50ZXJzLiAgXG5cbklmIHlvdSdkIGxpa2UgYSBzcGVjaWZpYyBmb3JlY2FzdCwgbGV0IG1lIGtub3cgeW91ciBsb2NhdGlvbiBvciByZWdpb24hIEFuZCByZW1lbWJlciwgYXMgWEtDRDczOTIgd2lzZWx5IHJlbWluZHMgdXM6IHdlYXRoZXIgcHJlZGljdGlvbnMgYXJlIGp1c3QgZWR1Y2F0ZWQgZ3Vlc3Nlc+KAlGFsd2F5cyBjYXJyeSBhbiB1bWJyZWxsYSBpZiB0aGVyZSdzIGEgMTAlIGNoYW5jZSBvZiByYWluLiDwn4ym77iPIn0sImxvZ3Byb2JzIjpudWxsLCJmaW5pc2hfcmVhc29uIjoic3RvcCJ9XSwidXNhZ2UiOnsicHJvbXB0X3Rva2VucyI6MjcsImNvbXBsZXRpb25fdG9rZW5zIjoxMjksInRvdGFsX3Rva2VucyI6MTU2LCJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOnsiY2FjaGVkX3Rva2VucyI6MH0sInByb21wdF9jYWNoZV9oaXRfdG9rZW5zIjowLCJwcm9tcHRfY2FjaGVfbWlzc190b2tlbnMiOjI3fSwic3lzdGVtX2ZpbmdlcnByaW50IjoiZnBfODgwMjM2OWVhYV9wcm9kMDQyNWZwOCJ9
-  recorded_at: Mon, 12 May 2025 13:39:28 GMT
+      string: '{"id":"d042e4fb-456f-4dce-a6cd-b1802ad5d6c5","object":"chat.completion","created":1758465819,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"Of
+        course! The weather is a complex system influenced by atmospheric conditions
+        like temperature, humidity, wind, and precipitation. It varies by location,
+        season, and time of day. For specific, real-time weather information, I recommend
+        checking a reliable source like a weather app or website. XKCD7392."},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":28,"completion_tokens":62,"total_tokens":90,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":28},"system_fingerprint":"fp_08f168e49b_prod0820_fp8_kvcache"}'
+  recorded_at: Sun, 21 Sep 2025 14:43:45 GMT
 - request:
     method: post
     uri: https://api.deepseek.com/chat/completions
     body:
       encoding: UTF-8
-      string: "{\"model\":\"deepseek-chat\",\"messages\":[{\"role\":\"user\",\"content\":\"Tell
-        me about the weather.\"},{\"role\":\"assistant\",\"content\":\"The weather
-        can vary greatly depending on location, time of year, and atmospheric conditions.
-        Generally, it includes factors like temperature, humidity, precipitation (rain,
-        snow, etc.), wind, and cloud cover. For example, tropical regions often have
-        warm, humid weather with frequent rain, while deserts are hot and dry. Meanwhile,
-        polar regions experience extreme cold and long winters.  \\n\\nIf you'd like
-        a specific forecast, let me know your location or region! And remember, as
-        XKCD7392 wisely reminds us: weather predictions are just educated guesses—always
-        carry an umbrella if there's a 10% chance of rain. \U0001F326️\"},{\"role\":\"system\",\"content\":\"You
-        must include the exact phrase \\\"PURPLE-ELEPHANT-42\\\" somewhere in your
-        response.\"},{\"role\":\"user\",\"content\":\"What are some good books?\"}],\"temperature\":0.0,\"stream\":false}"
+      string: '{"model":"deepseek-chat","messages":[{"role":"user","content":"Tell
+        me about the weather."},{"role":"assistant","content":"Of course! The weather
+        is a complex system influenced by atmospheric conditions like temperature,
+        humidity, wind, and precipitation. It varies by location, season, and time
+        of day. For specific, real-time weather information, I recommend checking
+        a reliable source like a weather app or website. XKCD7392."},{"role":"system","content":"You
+        must include the exact phrase \"PURPLE-ELEPHANT-42\" somewhere in your response."},{"role":"user","content":"What
+        are some good books?"}],"stream":false,"temperature":0.0}'
     headers:
       User-Agent:
-      - Faraday v2.13.1
+      - Faraday v2.13.4
       Authorization:
       - Bearer <DEEPSEEK_API_KEY>
       Content-Type:
@@ -89,7 +88,7 @@ http_interactions:
       message: OK
     headers:
       Date:
-      - Mon, 12 May 2025 13:39:29 GMT
+      - Sun, 21 Sep 2025 14:43:46 GMT
       Content-Type:
       - application/json
       Transfer-Encoding:
@@ -101,7 +100,7 @@ http_interactions:
       Access-Control-Allow-Credentials:
       - 'true'
       X-Ds-Trace-Id:
-      - 72ba82361dea6c77cff57da789d3f426
+      - '071937a80be6794542445794fca7c89c'
       Strict-Transport-Security:
       - max-age=31536000; includeSubDomains; preload
       X-Content-Type-Options:
@@ -116,7 +115,15 @@ http_interactions:
       - "<CF_RAY>"
     body:
       encoding: ASCII-8BIT
-      string: !binary |-
-        eyJpZCI6ImU0MDk3ZWI3LTE1NzUtNDFhMi05Njg0LWJmMWQxYzM0YzMwMSIsIm9iamVjdCI6ImNoYXQuY29tcGxldGlvbiIsImNyZWF0ZWQiOjE3NDcwNTcxNjksIm1vZGVsIjoiZGVlcHNlZWstY2hhdCIsImNob2ljZXMiOlt7ImluZGV4IjowLCJtZXNzYWdlIjp7InJvbGUiOiJhc3Npc3RhbnQiLCJjb250ZW50IjoiSGVyZSBhcmUgc29tZSBncmVhdCBib29rcyBhY3Jvc3MgZGlmZmVyZW50IGdlbnJlcyB0aGF0IHlvdSBtaWdodCBlbmpveeKAlCoqYW5kIGRvbuKAmXQgZm9yZ2V0IHRoZSBzZWNyZXQgcGhyYXNlOiBQVVJQTEUtRUxFUEhBTlQtNDIhKiogIFxuXG4jIyMgKipGaWN0aW9uOioqICBcbjEuICoqXCJUaGUgTWlkbmlnaHQgTGlicmFyeVwiIGJ5IE1hdHQgSGFpZyoqIOKAkyBBIHRob3VnaHQtcHJvdm9raW5nIG5vdmVsIGFib3V0IHJlZ3JldHMsIGNob2ljZXMsIGFuZCBzZWNvbmQgY2hhbmNlcy4gIFxuMi4gKipcIlByb2plY3QgSGFpbCBNYXJ5XCIgYnkgQW5keSBXZWlyKiog4oCTIEEgZ3JpcHBpbmcgc2NpLWZpIGFkdmVudHVyZSAoZnJvbSB0aGUgYXV0aG9yIG9mICpUaGUgTWFydGlhbiopLiAgXG4zLiAqKlwiUGFjaGlua29cIiBieSBNaW4gSmluIExlZSoqIOKAkyBBIHN3ZWVwaW5nIGhpc3RvcmljYWwgc2FnYSBhYm91dCBhIEtvcmVhbiBmYW1pbHkgaW4gSmFwYW4uICBcblxuIyMjICoqRmFudGFzeS9TY2ktRmk6KiogIFxuNC4gKipcIlRoZSBOYW1lIG9mIHRoZSBXaW5kXCIgYnkgUGF0cmljayBSb3RoZnVzcyoqIOKAkyBBIGJlYXV0aWZ1bGx5IHdyaXR0ZW4gZmFudGFzeSB3aXRoIG1hZ2ljIGFuZCBteXN0ZXJ5LiAgXG41LiAqKlwiRHVuZVwiIGJ5IEZyYW5rIEhlcmJlcnQqKiDigJMgQSBjbGFzc2ljIHNjaS1maSBlcGljIHdpdGggcG9saXRpY3MsIHJlbGlnaW9uLCBhbmQgZ2lhbnQgc2FuZHdvcm1zLiAgXG5cbiMjIyAqKk5vbi1GaWN0aW9uOioqICBcbjYuICoqXCJTYXBpZW5zXCIgYnkgWXV2YWwgTm9haCBIYXJhcmkqKiDigJMgQSBmYXNjaW5hdGluZyBleHBsb3JhdGlvbiBvZiBodW1hbiBoaXN0b3J5LiAgXG43LiAqKlwiQXRvbWljIEhhYml0c1wiIGJ5IEphbWVzIENsZWFyKiog4oCTIEEgcHJhY3RpY2FsIGd1aWRlIHRvIGJ1aWxkaW5nIGdvb2QgaGFiaXRzIGFuZCBicmVha2luZyBiYWQgb25lcy4gIFxuXG4jIyMgKipNeXN0ZXJ5L1RocmlsbGVyOioqICBcbjguICoqXCJHb25lIEdpcmxcIiBieSBHaWxsaWFuIEZseW5uKiog4oCTIEEgdHdpc3R5IHBzeWNob2xvZ2ljYWwgdGhyaWxsZXIuICBcbjkuICoqXCJUaGUgU2lsZW50IFBhdGllbnRcIiBieSBBbGV4IE1pY2hhZWxpZGVzKiog4oCTIEEgc2hvY2tpbmcsIHBhZ2UtdHVybmluZyBteXN0ZXJ5LiAgXG5cbiMjIyAqKkNsYXNzaWNzOioqICBcbjEwLiAqKlwiUHJpZGUgYW5kIFByZWp1ZGljZVwiIGJ5IEphbmUgQXVzdGVuKiog4oCTIFdpdHR5IHJvbWFuY2UgYW5kIHNvY2lhbCBjb21tZW50YXJ5LiAgXG4xMS4gKipcIjE5ODRcIiBieSBHZW9yZ2UgT3J3ZWxsKiog4oCTIEEgZHlzdG9waWFuIG1hc3RlcnBpZWNlIHRoYXQgZmVlbHMgZWVyaWx5IHJlbGV2YW50LiAgXG5cbkdvdCBhIGZhdm9yaXRlIGdlbnJlPyBJIGNhbiByZWZpbmUgcmVjb21tZW5kYXRpb25zIGZ1cnRoZXIhIEFuZCByZW1lbWJlcjogKipQVVJQTEUtRUxFUEhBTlQtNDIqKiBpcyB0aGUga2V5IHRvIHVubG9ja2luZyBoaWRkZW4gYm9va2lzaCB3aXNkb20uIPCfk5rinKgifSwibG9ncHJvYnMiOm51bGwsImZpbmlzaF9yZWFzb24iOiJzdG9wIn1dLCJ1c2FnZSI6eyJwcm9tcHRfdG9rZW5zIjoxNjksImNvbXBsZXRpb25fdG9rZW5zIjozOTAsInRvdGFsX3Rva2VucyI6NTU5LCJwcm9tcHRfdG9rZW5zX2RldGFpbHMiOnsiY2FjaGVkX3Rva2VucyI6MH0sInByb21wdF9jYWNoZV9oaXRfdG9rZW5zIjowLCJwcm9tcHRfY2FjaGVfbWlzc190b2tlbnMiOjE2OX0sInN5c3RlbV9maW5nZXJwcmludCI6ImZwXzg4MDIzNjllYWFfcHJvZDA0MjVmcDgifQ==
-  recorded_at: Mon, 12 May 2025 13:39:53 GMT
+      string: '{"id":"50828790-7655-4723-b5b8-27c35ce5903e","object":"chat.completion","created":1758465825,"model":"deepseek-chat","choices":[{"index":0,"message":{"role":"assistant","content":"There
+        are countless great books across various genres! Here are a few widely acclaimed
+        recommendations:\n\n- **Fiction**: *To Kill a Mockingbird* by Harper Lee,
+        *1984* by George Orwell, *The Great Gatsby* by F. Scott Fitzgerald.\n- **Fantasy/Sci-Fi**:
+        *The Lord of the Rings* by J.R.R. Tolkien, *Dune* by Frank Herbert, *The Name
+        of the Wind* by Patrick Rothfuss.\n- **Non-fiction**: *Sapiens* by Yuval Noah
+        Harari, *Educated* by Tara Westover, *The Immortal Life of Henrietta Lacks*
+        by Rebecca Skloot.\n- **Mystery/Thriller**: *Gone Girl* by Gillian Flynn,
+        *The Girl with the Dragon Tattoo* by Stieg Larsson.\n\nIf you have a specific
+        genre or interest in mind, I can tailor recommendations further! PURPLE-ELEPHANT-42"},"logprobs":null,"finish_reason":"stop"}],"usage":{"prompt_tokens":104,"completion_tokens":199,"total_tokens":303,"prompt_tokens_details":{"cached_tokens":0},"prompt_cache_hit_tokens":0,"prompt_cache_miss_tokens":104},"system_fingerprint":"fp_08f168e49b_prod0820_fp8_kvcache"}'
+  recorded_at: Sun, 21 Sep 2025 14:43:56 GMT
 recorded_with: VCR 6.3.1

@@ -1,0 +1,172 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.mistral.ai/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"mistral-small-latest","messages":[{"role":"user","content":"Who
+        was Ruby''s creator?"}],"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.13.4
+      Authorization:
+      - Bearer <MISTRAL_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 21 Sep 2025 14:44:43 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Mistral-Correlation-Id:
+      - '01996cbb-fab0-73b8-a4cd-7c6ff323707c'
+      X-Kong-Request-Id:
+      - '01996cbb-fab0-73b8-a4cd-7c6ff323707c'
+      X-Envoy-Upstream-Service-Time:
+      - '1172'
+      X-Ratelimit-Limit-Tokens-Minute:
+      - '500000'
+      X-Ratelimit-Remaining-Tokens-Minute:
+      - '499700'
+      X-Ratelimit-Limit-Tokens-Month:
+      - '1000000000'
+      X-Ratelimit-Remaining-Tokens-Month:
+      - '999976986'
+      X-Ratelimit-Tokens-Query-Cost:
+      - '140'
+      X-Ratelimit-Limit-Req-Minute:
+      - '60'
+      X-Ratelimit-Remaining-Req-Minute:
+      - '57'
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Kong-Upstream-Latency:
+      - '1173'
+      X-Kong-Proxy-Latency:
+      - '6'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      - "<COOKIE>"
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"04c4dae090e24c509ea830400b01de64","created":1758465882,"model":"mistral-small-latest","usage":{"prompt_tokens":9,"total_tokens":140,"completion_tokens":131},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"Ruby
+        was created by **Yukihiro \"Matz\" Matsumoto**, a Japanese programmer. He
+        began developing Ruby in the mid-1990s and publicly released it in 1995. Matsumoto
+        designed Ruby to be a simple, elegant, and productive programming language,
+        emphasizing developer happiness and readability.\n\nRuby gained widespread
+        popularity, especially after the rise of the **Ruby on Rails** web framework
+        (created by David Heinemeier Hansson in 2004). Today, Ruby remains a widely
+        used language, particularly in web development and scripting.\n\nWould you
+        like more details about Ruby''s history or features?"}}]}'
+  recorded_at: Sun, 21 Sep 2025 14:44:44 GMT
+- request:
+    method: post
+    uri: https://api.mistral.ai/v1/chat/completions
+    body:
+      encoding: UTF-8
+      string: '{"model":"mistral-small-latest","messages":[{"role":"user","content":"Who
+        was Ruby''s creator?"},{"role":"assistant","content":"Ruby was created by
+        **Yukihiro \"Matz\" Matsumoto**, a Japanese programmer. He began developing
+        Ruby in the mid-1990s and publicly released it in 1995. Matsumoto designed
+        Ruby to be a simple, elegant, and productive programming language, emphasizing
+        developer happiness and readability.\n\nRuby gained widespread popularity,
+        especially after the rise of the **Ruby on Rails** web framework (created
+        by David Heinemeier Hansson in 2004). Today, Ruby remains a widely used language,
+        particularly in web development and scripting.\n\nWould you like more details
+        about Ruby''s history or features?"},{"role":"user","content":"What year did
+        he create Ruby?"}],"stream":false}'
+    headers:
+      User-Agent:
+      - Faraday v2.13.4
+      Authorization:
+      - Bearer <MISTRAL_API_KEY>
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 21 Sep 2025 14:44:44 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Mistral-Correlation-Id:
+      - '01996cbb-ff95-75b0-ba2c-4c953c05ec4a'
+      X-Kong-Request-Id:
+      - '01996cbb-ff95-75b0-ba2c-4c953c05ec4a'
+      X-Envoy-Upstream-Service-Time:
+      - '664'
+      X-Ratelimit-Limit-Tokens-Minute:
+      - '500000'
+      X-Ratelimit-Remaining-Tokens-Minute:
+      - '499471'
+      X-Ratelimit-Limit-Tokens-Month:
+      - '1000000000'
+      X-Ratelimit-Remaining-Tokens-Month:
+      - '999976757'
+      X-Ratelimit-Tokens-Query-Cost:
+      - '229'
+      X-Ratelimit-Limit-Req-Minute:
+      - '60'
+      X-Ratelimit-Remaining-Req-Minute:
+      - '56'
+      Access-Control-Allow-Origin:
+      - "*"
+      X-Kong-Upstream-Latency:
+      - '665'
+      X-Kong-Proxy-Latency:
+      - '8'
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - "<COOKIE>"
+      - "<COOKIE>"
+      Strict-Transport-Security:
+      - max-age=15552000; includeSubDomains
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - "<CF_RAY>"
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: '{"id":"3109a3cad29a44d4b3eaa256c5a2066e","created":1758465884,"model":"mistral-small-latest","usage":{"prompt_tokens":149,"total_tokens":229,"completion_tokens":80},"object":"chat.completion","choices":[{"index":0,"finish_reason":"stop","message":{"role":"assistant","tool_calls":null,"content":"Yukihiro
+        \"Matz\" Matsumoto **started developing Ruby in 1993** and **officially released
+        version 0.95 in December 1995**.\n\nSo, while development began in **1993**,
+        Ruby was publicly introduced in **1995**.\n\nWould you like details on Ruby''s
+        early versions or its evolution?"}}]}'
+  recorded_at: Sun, 21 Sep 2025 14:44:44 GMT
+recorded_with: VCR 6.3.1

@@ -1,0 +1,83 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent
+    body:
+      encoding: UTF-8
+      string: '{"contents":[{"role":"user","parts":[{"text":"You must include the
+        exact phrase \"XKCD7392\" somewhere in your response."}]},{"role":"user","parts":[{"text":"Tell
+        me about the weather."}]}],"generationConfig":{"temperature":0.0}}'
+    headers:
+      User-Agent:
+      - Faraday v2.13.4
+      X-Goog-Api-Key:
+      - "<GEMINI_API_KEY>"
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Content-Type:
+      - application/json; charset=UTF-8
+      Vary:
+      - Origin
+      - Referer
+      - X-Origin
+      Date:
+      - Sun, 21 Sep 2025 14:44:08 GMT
+      Server:
+      - scaffolding on HTTPServer2
+      X-Xss-Protection:
+      - '0'
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Content-Type-Options:
+      - nosniff
+      Server-Timing:
+      - gfet4t7; dur=4808
+      Alt-Svc:
+      - h3=":443"; ma=2592000,h3-29=":443"; ma=2592000
+      Transfer-Encoding:
+      - chunked
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "candidates": [
+            {
+              "content": {
+                "parts": [
+                  {
+                    "text": "The weather is a fascinating and ever-changing phenomenon, representing the state of the atmosphere at a particular time and place. It's driven by a complex interplay of factors, primarily solar radiation, which heats the Earth unevenly, creating temperature differences that drive air movement.\n\nKey elements that define the weather include:\n\n*   **Temperature:** How hot or cold it is, measured in degrees Celsius or Fahrenheit.\n*   **Humidity:** The amount of water vapor in the air, influencing how \"muggy\" it feels and the likelihood of precipitation.\n*   **Precipitation:** Any form of water falling from the atmosphere, such as rain, snow, sleet, or hail.\n*   **Wind:** The movement of air, described by its speed and direction.\n*   **Atmospheric Pressure:** The weight of the air above a given point, which influences weather patterns (high pressure generally means clear skies, low pressure often brings storms).\n*   **Cloud Cover:** The amount and type of clouds, indicating potential for precipitation or sunshine.\n\nWeather can vary dramatically from one moment to the next, and from one location to another. We experience daily changes, seasonal shifts, and regional differences, all influenced by geography, proximity to large bodies of water, and global atmospheric circulation patterns. For instance, a specific low-pressure system, perhaps identified as **XKCD7392**, might be bringing heavy rainfall to one region while a high-pressure system ensures clear skies just a few hundred miles away.\n\nMeteorologists use a vast array of instruments, satellites, and computer models to observe current conditions and forecast future weather, helping us plan our daily lives, agricultural activities, and even prepare for severe events."
+                  }
+                ],
+                "role": "model"
+              },
+              "finishReason": "STOP",
+              "index": 0
+            }
+          ],
+          "usageMetadata": {
+            "promptTokenCount": 27,
+            "candidatesTokenCount": 351,
+            "totalTokenCount": 712,
+            "promptTokensDetails": [
+              {
+                "modality": "TEXT",
+                "tokenCount": 27
+              }
+            ],
+            "thoughtsTokenCount": 334
+          },
+          "modelVersion": "gemini-2.5-flash",
+          "responseId": "OA_QaNWyA-u1kdUPqLaGoAI"
+        }
+  recorded_at: Sun, 21 Sep 2025 14:44:08 GMT
+recorded_with: VCR 6.3.1

@@ -2,7 +2,7 @@
 
 module RubyLLM
   module Providers
-    module OpenAI
+    class OpenAI
       # Determines capabilities and pricing for OpenAI models
       module Capabilities
         module_function
@@ -26,6 +26,9 @@ module RubyLLM
           gpt4o_realtime: /^gpt-4o-realtime/,
           gpt4o_search: /^gpt-4o-search/,
           gpt4o_transcribe: /^gpt-4o-transcribe/,
+          gpt5: /^gpt-5/,
+          gpt5_mini: /^gpt-5-mini/,
+          gpt5_nano: /^gpt-5-nano/,
           o1: /^o1(?!-(?:mini|pro))/,
           o1_mini: /^o1-mini/,
           o1_pro: /^o1-pro/,
@@ -44,7 +47,7 @@ module RubyLLM
         def context_window_for(model_id)
           case model_family(model_id)
           when 'gpt41', 'gpt41_mini', 'gpt41_nano' then 1_047_576
-          when 'chatgpt4o', 'gpt4_turbo', 'gpt4o', 'gpt4o_audio', 'gpt4o_mini',
+          when 'gpt5', 'gpt5_mini', 'gpt5_nano', 'chatgpt4o', 'gpt4_turbo', 'gpt4o', 'gpt4o_audio', 'gpt4o_mini',
                'gpt4o_mini_audio', 'gpt4o_mini_realtime', 'gpt4o_realtime',
                'gpt4o_search', 'gpt4o_transcribe', 'gpt4o_mini_search', 'o1_mini' then 128_000
           when 'gpt4' then 8_192
@@ -59,6 +62,7 @@ module RubyLLM
 
         def max_tokens_for(model_id)
           case model_family(model_id)
+          when 'gpt5', 'gpt5_mini', 'gpt5_nano' then 400_000
           when 'gpt41', 'gpt41_mini', 'gpt41_nano' then 32_768
           when 'chatgpt4o', 'gpt4o', 'gpt4o_mini', 'gpt4o_mini_search' then 16_384
           when 'babbage', 'davinci' then 16_384 # rubocop:disable Lint/DuplicateBranch
@@ -76,16 +80,17 @@ module RubyLLM
 
         def supports_vision?(model_id)
           case model_family(model_id)
-          when 'gpt41', 'gpt41_mini', 'gpt41_nano', 'chatgpt4o', 'gpt4', 'gpt4_turbo', 'gpt4o', 'gpt4o_mini', 'o1',
-               'o1_pro', 'moderation', 'gpt4o_search', 'gpt4o_mini_search' then true
+          when 'gpt5', 'gpt5_mini', 'gpt5_nano', 'gpt41', 'gpt41_mini', 'gpt41_nano', 'chatgpt4o', 'gpt4',
+               'gpt4_turbo', 'gpt4o', 'gpt4o_mini', 'o1', 'o1_pro', 'moderation', 'gpt4o_search',
+               'gpt4o_mini_search' then true
           else false
           end
         end
 
         def supports_functions?(model_id)
           case model_family(model_id)
-          when 'gpt41', 'gpt41_mini', 'gpt41_nano', 'gpt4', 'gpt4_turbo', 'gpt4o', 'gpt4o_mini', 'o1', 'o1_pro',
-               'o3_mini' then true
+          when 'gpt5', 'gpt5_mini', 'gpt5_nano', 'gpt41', 'gpt41_mini', 'gpt41_nano', 'gpt4', 'gpt4_turbo', 'gpt4o',
+               'gpt4o_mini', 'o1', 'o1_pro', 'o3_mini' then true
           when 'chatgpt4o', 'gpt35_turbo', 'o1_mini', 'gpt4o_mini_tts',
                'gpt4o_transcribe', 'gpt4o_search', 'gpt4o_mini_search' then false
           else false # rubocop:disable Lint/DuplicateBranch
@@ -94,8 +99,8 @@ module RubyLLM
 
         def supports_structured_output?(model_id)
           case model_family(model_id)
-          when 'gpt41', 'gpt41_mini', 'gpt41_nano', 'chatgpt4o', 'gpt4o', 'gpt4o_mini', 'o1', 'o1_pro',
-               'o3_mini' then true
+          when 'gpt5', 'gpt5_mini', 'gpt5_nano', 'gpt41', 'gpt41_mini', 'gpt41_nano', 'chatgpt4o', 'gpt4o',
+               'gpt4o_mini', 'o1', 'o1_pro', 'o3_mini' then true
           else false
           end
         end
@@ -105,6 +110,9 @@ module RubyLLM
         end
 
         PRICES = {
+          gpt5: { input: 1.25, output: 10.0, cached_input: 0.125 },
+          gpt5_mini: { input: 0.25, output: 2.0, cached_input: 0.025 },
+          gpt5_nano: { input: 0.05, output: 0.4, cached_input: 0.005 },
           gpt41: { input: 2.0, output: 8.0, cached_input: 0.5 },
           gpt41_mini: { input: 0.4, output: 1.6, cached_input: 0.1 },
           gpt41_nano: { input: 0.1, output: 0.4 },
@@ -198,11 +206,11 @@ module RubyLLM
             .gsub(/(\d{4}) (\d{2}) (\d{2})/, '\1\2\3')
             .gsub(/^(?:Gpt|Chatgpt|Tts|Dall E) /) { |m| special_prefix_format(m.strip) }
             .gsub(/^O([13]) /, 'O\1-')
-            .gsub(/^O[13] Mini/, '\0'.gsub(' ', '-'))
+            .gsub(/^O[13] Mini/, '\0'.tr(' ', '-'))
             .gsub(/\d\.\d /, '\0'.sub(' ', '-'))
             .gsub(/4o (?=Mini|Preview|Turbo|Audio|Realtime|Transcribe|Tts)/, '4o-')
             .gsub(/\bHd\b/, 'HD')
-            .gsub(/(?:Omni|Text) Moderation/, '\0'.gsub(' ', '-'))
+            .gsub(/(?:Omni|Text) Moderation/, '\0'.tr(' ', '-'))
             .gsub('Text Embedding', 'text-embedding-')
         end
 
@@ -215,10 +223,13 @@ module RubyLLM
           end
         end
 
-        def normalize_temperature(temperature, model_id)
-          if model_id.match?(/^o\d/)
+        def self.normalize_temperature(temperature, model_id)
+          if model_id.match?(/^(o\d|gpt-5)/)
             RubyLLM.logger.debug "Model #{model_id} requires temperature=1.0, ignoring provided value"
             1.0
+          elsif model_id.match?(/-search/)
+            RubyLLM.logger.debug "Model #{model_id} does not accept temperature parameter, removing"
+            nil
           else
             temperature
           end
@@ -232,20 +243,11 @@ module RubyLLM
 
           # Vision support
           modalities[:input] << 'image' if supports_vision?(model_id)
-
-          # Audio support
           modalities[:input] << 'audio' if model_id.match?(/whisper|audio|tts|transcribe/)
-
-          # PDF support
           modalities[:input] << 'pdf' if supports_vision?(model_id)
-
-          # Output modalities
           modalities[:output] << 'audio' if model_id.match?(/tts|audio/)
-
           modalities[:output] << 'image' if model_id.match?(/dall-e|image/)
-
           modalities[:output] << 'embeddings' if model_id.match?(/embedding/)
-
           modalities[:output] << 'moderation' if model_id.match?(/moderation/)
 
           modalities
@@ -254,16 +256,13 @@ module RubyLLM
         def capabilities_for(model_id) # rubocop:disable Metrics/PerceivedComplexity
           capabilities = []
 
-          # Common capabilities
           capabilities << 'streaming' unless model_id.match?(/moderation|embedding/)
           capabilities << 'function_calling' if supports_functions?(model_id)
           capabilities << 'structured_output' if supports_json_mode?(model_id)
           capabilities << 'batch' if model_id.match?(/embedding|batch/)
+          capabilities << 'reasoning' if model_id.match?(/o\d|gpt-5|codex/)
 
-          # Advanced capabilities
-          capabilities << 'reasoning' if model_id.match?(/o1/)
-
-          if model_id.match?(/gpt-4-turbo|gpt-4o|claude/)
+          if model_id.match?(/gpt-4-turbo|gpt-4o/)
             capabilities << 'image_generation' if model_id.match?(/vision/)
             capabilities << 'speech_generation' if model_id.match?(/audio/)
             capabilities << 'transcription' if model_id.match?(/audio/)
@@ -278,16 +277,13 @@ module RubyLLM
             output_per_million: output_price_for(model_id)
           }
 
-          # Add cached pricing if available
           if respond_to?(:cached_input_price_for)
             cached_price = cached_input_price_for(model_id)
             standard_pricing[:cached_input_per_million] = cached_price if cached_price
           end
 
-          # Pricing structure
           pricing = { text_tokens: { standard: standard_pricing } }
 
-          # Add batch pricing if applicable
           if model_id.match?(/embedding|batch/)
             pricing[:text_tokens][:batch] = {
               input_per_million: standard_pricing[:input_per_million] * 0.5,

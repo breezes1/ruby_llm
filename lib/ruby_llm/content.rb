@@ -2,7 +2,6 @@
 
 module RubyLLM
   # Represents the content sent to or received from an LLM.
-  # Selects the appropriate attachment class based on the content type.
   class Content
     attr_reader :text, :attachments
 
@@ -14,8 +13,8 @@ module RubyLLM
       raise ArgumentError, 'Text and attachments cannot be both nil' if @text.nil? && @attachments.empty?
     end
 
-    def add_attachment(source)
-      @attachments << Attachment.new(source)
+    def add_attachment(source, filename: nil)
+      @attachments << Attachment.new(source, filename:)
       self
     end
 
@@ -42,8 +41,7 @@ module RubyLLM
 
     def process_attachments(attachments)
       if attachments.is_a?(Hash)
-        # Ignores types (like :image, :audio, :text, :pdf) since we have robust MIME type detection
-        attachments.each_value(&method(:process_attachments_array_or_string))
+        attachments.each_value { |attachment| process_attachments_array_or_string(attachment) }
       else
         process_attachments_array_or_string attachments
       end
