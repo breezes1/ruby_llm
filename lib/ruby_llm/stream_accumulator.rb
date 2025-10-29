@@ -62,9 +62,9 @@ module RubyLLM
     def accumulate_tool_calls(new_tool_calls)
       RubyLLM.logger.debug "Accumulating tool calls: #{new_tool_calls}" if RubyLLM.config.log_stream_debug
       new_tool_calls.each_value do |tool_call|
-        if tool_call.id
+        if tool_call.id.present?
           tool_call_id = tool_call.id.empty? ? SecureRandom.uuid : tool_call.id
-          tool_call_arguments = tool_call.arguments.empty? ? +'' : tool_call.arguments
+          tool_call_arguments = String.new(tool_call.arguments.to_s)
           @tool_calls[tool_call.id] = ToolCall.new(
             id: tool_call_id,
             name: tool_call.name,
